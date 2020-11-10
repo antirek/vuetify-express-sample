@@ -5,6 +5,19 @@ module.exports = {
   "runtimeCompiler": true,
   filenameHashing: false,
   "configureWebpack": {
+    /*
+    module: {
+      rules: [
+        {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            hotReload: true,
+          }
+        }
+      ]
+    },
+    */
     "output": {
       "filename": 'app.js',
     },

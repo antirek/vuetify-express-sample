@@ -1,43 +1,39 @@
-/** * Created by vouill on 11/13/17. */
-
 <template>
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-    <router-link class="navbar-brand" to="/">
-      <img src="../../assets/logo.png" width="40px" /><strong
-        >DOGEBOOK</strong
+  <v-app-bar
+      app
+      flat
+      color="blue accent-6"
+    >
+    <v-container class="py-0 fill-height">
+      <v-avatar
+        class="mr-10"
+        size="48"
       >
-    </router-link>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav" v-if="isAuthenticated">
-        <li class="nav-item">
-          <router-link to="/items" class="nav-link"><span>Catalog</span></router-link>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto ">
-        <li class="nav-item" v-if="isProfileLoaded">
-          <router-link to="/account" class="nav-link">{{ name }}</router-link>
-        </li>
-        <li class="nav-item logout" v-if="isAuthenticated" @click="logout">
-          <span class="nav-link">Logout</span>
-        </li>
-        <li class="nav-item" v-if="!isAuthenticated && !authLoading">
-          <router-link to="/login" class="nav-link">Login</router-link>
-        </li>
-      </ul>
-    </div>   
-  </nav>
-</template>
+        <img src="../../assets/logo.png" width="40px">
+      </v-avatar>
+      <v-toolbar-title class="mr-10">
+        <strong>DOGEBOOK</strong>
+      </v-toolbar-title>
 
-<style lang="scss" scoped>
-.logout {
-  &:hover {
-    cursor: pointer;
-  }
-}
-</style>
+      <v-btn to="/items" rounded style="text-decoration: none;">Catalog</v-btn>
+
+      <v-spacer></v-spacer>
+
+      <v-btn elevation="1" rounded to="/account" v-if="isProfileLoaded" class="ma-1" text>  
+        <v-icon>mdi-account</v-icon>
+        {{ name }}
+      </v-btn>
+      <v-btn v-if="isAuthenticated" @click="logout" rounded class="ma-1">
+        <v-icon>mdi-account</v-icon>
+        Logout
+      </v-btn>
+      <v-btn v-if="!isAuthenticated" to="login" rounded class="ma-1">
+        <v-icon>mdi-account</v-icon>
+        Login
+      </v-btn>
+    </v-container>
+  </v-app-bar>
+</template>
 
 <script>
 import { mapGetters, mapState } from "vuex";
