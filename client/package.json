@@ -17,6 +17,8 @@
     "core-js": "^3.4.4",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.0.0",
     "resource-axios": "^1.2.5",
     "roboto-fontface": "*",
     "vue": "^2.6.10",

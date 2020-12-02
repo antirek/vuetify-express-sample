@@ -1,20 +1,15 @@
-<template>
-  <div class="row">
-    <div v-if="items" class="col col-md-4">
-      <h3>Items List</h3>
-      <router-link :to="{path:'/items/new'}"> add </router-link>
-      <ul v-if="items">
-        <li v-for="(item, index) in items" :key="item.title">
-          <router-link :to="{ path: '/items/' + item._id }">
-            {{ index }} - {{ item.title }}
-          </router-link>
-        </li>
-      </ul>
-      <br/>
-      
-    </div>
-    <router-view class="col col-md-8"/>
-  </div>
+<template lang="pug">
+  .row
+    .col.col-md-4
+      h3 Items List
+      br
+      router-link(:to="{path:'/items/new'}")  add 
+      ul(v-if='items')
+        li(v-for='(item, index) in items' :key='item.title')
+          router-link(:to="{ path: '/items/' + item._id }")
+            | {{ index }} - {{ item.title }}
+      br
+    router-view.col.col-md-8
 </template>
 
 <script>
