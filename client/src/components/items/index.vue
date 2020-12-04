@@ -6,7 +6,7 @@
       router-link(:to="{path:'/items/new'}")  add 
       ul(v-if='items')
         li(v-for='(item, index) in items' :key='item.title')
-          router-link(:to="{ path: '/items/' + item._id }")
+          router-link(:to="{ path: '/items/' + item._id  + '/edit'}")
             | {{ index }} - {{ item.title }}
       br
     router-view.col.col-md-8

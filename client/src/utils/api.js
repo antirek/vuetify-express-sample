@@ -10,7 +10,10 @@ axios.interceptors.request.use(function (config) {
   return config;
 });
 
-const Item = resource(baseUrl + '/items', axios);
+const Item = resource(baseUrl + '/items', {
+  getByShort: (short) => axios.get(`${baseUrl}/items/getByShort/${short}`),
+},axios);
+
 
 export {Item};
 

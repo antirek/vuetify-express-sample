@@ -17,6 +17,8 @@
 
       <v-btn to="/items" rounded style="text-decoration: none;">Catalog</v-btn>
 
+      <v-btn to="/plums" rounded style="text-decoration: none;">Plums</v-btn>
+
       <v-spacer></v-spacer>
 
       <v-btn elevation="1" rounded to="/account" v-if="isProfileLoaded" class="ma-1" text>  

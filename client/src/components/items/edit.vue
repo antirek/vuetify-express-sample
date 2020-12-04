@@ -1,13 +1,28 @@
-<template>
-  <div>
-    profile edit
-    <div v-if="profile">
-      <h2>{{ profile.title }}</h2>
-      <input v-model="profile.title" placeholder="title" />
-      <input v-model="profile.data" placeholder="data" />
-      <input type="button" value="send" @click="sendProfile()" />
-    </div>
-  </div>
+<template lang="pug">
+  div
+    | item edit
+    div(v-if='profile')
+      h2 {{ profile.title }}
+      v-text-field(
+        label="Title"
+        hide-details="auto"
+        v-model='profile.title')
+      v-text-field(
+        label="Data"
+        hide-details="auto"
+        v-model='profile.data')
+      v-text-field(
+        label="logoUrl"
+        hide-details="auto"
+        v-model='profile.logoUrl')
+      v-text-field(
+        label="short"
+        hide-details="auto"
+        v-model='profile.short')
+      br
+      v-btn(
+        block
+        @click='sendProfile()') Save
 </template>
 
 <script>
