@@ -9,11 +9,15 @@ const User = mongoose.model('User', new mongoose.Schema({
 
 exports.User = User;
 
-
 const Item = mongoose.model('Item', new mongoose.Schema({
   title: String,
   data: String,
+  logoUrl: String,
+  short: {
+    type: String,
+    index: true,
+    unique: true,
+  },
 }));
-
 
 exports.Item = Item;

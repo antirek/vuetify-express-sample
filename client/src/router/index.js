@@ -5,6 +5,8 @@ import Account from "components/account";
 import Login from "components/login";
 import ItemsList from "components/items";
 import ItemsRoutes from "components/items/_routes"
+import PlumsList from "components/plums";
+import PlumView from "components/plums/view";
 
 import store from "../store";
 
@@ -46,6 +48,18 @@ export default new Router({
       component: ItemsList,
       beforeEnter: ifAuthenticated,
       children: ItemsRoutes,
+    },
+    {
+      path: "/plums",
+      name: "plums",
+      component: PlumsList,
+      beforeEnter: ifAuthenticated,
+    },
+    {
+      path: "/plums/:id",
+      component: PlumView,
+      name: "plumView",
+      beforeEnter: ifAuthenticated,
     },
     {
       path: "/login",

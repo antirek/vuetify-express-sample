@@ -4,6 +4,8 @@
     <div v-if="profile">
       <h2>{{ profile.title }}</h2>
       <p>{{ profile.data }}</p>
+      <p>{{ profile.logoUrl }}</p>
+      <p>{{ profile.short }}</p>
       <router-link :to="{ path: '/items/' + profile._id  + '/edit'}">edit</router-link>
     </div>
   </div>

@@ -9,6 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const db = mongoose.connect(config.mongodb, { 
   useNewUrlParser: true,
+  createIndexes: true,
 });
 
 const {Item, User} = require('./models');
@@ -120,6 +121,19 @@ app.get('/items/:id', async (req, res)=>{
   }
   res.json(item);
 });
+
+app.get('/items/getByShort/:short', async (req, res)=>{  
+  const short = req.params.short;
+  console.log('GET by short', short);
+  const item = await Item.findOne({short});
+  console.log({item});
+  if(!item) {
+    res.sendStatus(404);
+    return;
+  }
+  res.json(item);
+});
+
 
 app.delete('/items/:id', async (req, res)=>{
   const id = req.params.id;
