@@ -2,7 +2,10 @@ import axios from 'axios';
 import store from './../store';
 import resource from 'resource-axios';
 
-const baseUrl = 'http://localhost:3000';
+const testUrl = 'http://localhost:3000';
+const baseUrl = (window.baseUrl && window.baseUrl !== '{{baseUrl}}') ? window.baseUrl : testUrl;
+
+console.log('baseUrl', baseUrl);
 
 axios.interceptors.request.use(function (config) {
   const token = store.getters.token;

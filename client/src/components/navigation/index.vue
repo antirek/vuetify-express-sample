@@ -6,12 +6,12 @@
     >
     <v-container class="py-0 fill-height">
       <v-avatar
-        class="mr-10"
+        class="mr-5"
         size="48"
       >
         <img src="../../assets/logo.png" width="40px">
       </v-avatar>
-      <v-toolbar-title class="mr-10">
+      <v-toolbar-title class="mr-15">
         <strong>DOGEBOOK</strong>
       </v-toolbar-title>
 

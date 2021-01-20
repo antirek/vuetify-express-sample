@@ -29,19 +29,19 @@ app.use('/public',
 
 app.use('/img',
     express['static'](path.join(__dirname, './../client/dist/img')));
-//app.use(favicon(path.join(__dirname, './../client/dist/', 'favicon.ico')))
+    //app.use(favicon(path.join(__dirname, './../client/dist/', 'favicon.ico')))
 
-app.get('/script/app.js', (req, res) => {
-  const file = fs.readFileSync(path.join(__dirname, './../client/dist/app.js'));
-  let q = file.toString();
-  if (config.baseUrl) {
-    console.log(config.baseUrl, file);
-    // Error: replaceAll is not a function  q = file.toString().replaceAll('http://localhost:3000', config.baseurl);
-    const searchRegExp = new RegExp('http://localhost:3000', 'g');
-    q = file.toString().replace(searchRegExp, config.baseUrl);
-  }
-  res.send(q);
+app.get('/app.js', (req, res) => {
+  res.sendFile(path.join(__dirname, './../client/dist/app.js'));
 })
+
+app.get('/css/app.css', (req, res) => {
+  res.sendFile(path.join(__dirname, './../client/dist/css/app.css'));
+})
+
+app.get('/fonts/:filename', (req, res) => {
+  res.sendFile(path.join(__dirname, './../client/dist/fonts', req.params.filename));
+});
 
 const getActiveSession = async (token) => {
   console.log({token})
@@ -65,7 +65,11 @@ const prepare = async (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-  res.render('layout');
+  //res.render('layout');
+  const file = fs.readFileSync(path.join(__dirname, '../client/dist/index.html'));
+  const q = file.toString();
+  const ready = q.replace(new RegExp('{{baseUrl}}', 'g'), config.baseUrl);
+  res.send(ready);
 })
 
 app.get('/me', prepare, (req,res) => {
